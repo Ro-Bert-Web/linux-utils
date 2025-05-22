@@ -1,6 +1,4 @@
 alias sl='ls'
 alias ok='echo -en "\\a"'
 alias rm='rm -I'
-alias sort='sort -g'
-alias grep='grep -E'
-alias sed='sed -E'
+alias tree='tree -C'
