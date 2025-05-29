@@ -1,0 +1,26 @@
+#!/bin/bash
+
+files=$(find * -type f -not \( -path *.git* -or -name install \))
+
+for file in $files; do
+    finished=0
+    while [ $finished -eq 0 ]; do
+        if [ -f ~/.$file ]; then
+            echo
+            echo
+            echo "~/.$file already exists. Would you like to replace it?"
+            echo "([y]es, [n]o, [d]iff)"
+            read prompt
+            if [ $prompt = "y" ]; then
+                rm ~/.$file
+            elif [ $prompt = "n" ]; then
+                finished=1
+            elif [ $prompt = "d" ]; then
+                vimdiff ~/.$file $file
+            fi
+        else
+            ln -s $(pwd)/$file ~/.$file
+            finished=1
+        fi
+    done
+done

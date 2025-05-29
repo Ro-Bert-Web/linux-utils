@@ -8,9 +8,6 @@ case $- in
       *) return;;
 esac
 
-# Connect to cal poly servers
-#sshfs ikroeker@unix3.csc.calpoly.edu:/home/ikroeker/Documents ~/CSCServer
-
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
