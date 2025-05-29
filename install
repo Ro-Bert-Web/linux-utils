@@ -19,6 +19,7 @@ for file in $files; do
                 vimdiff ~/.$file $file
             fi
         else
+            mkdir -p $(dirname ~/.$file)
             ln -s $(pwd)/$file ~/.$file
             finished=1
         fi
