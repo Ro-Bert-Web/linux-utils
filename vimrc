@@ -6,6 +6,7 @@ set tabstop=4       "How many spaces is a tab character worth"
 set autoindent      "Copy indentation from previous line"
 set smartindent     "Indent C Code"
 syntax on
+inoremap {<CR> {<CR>}<C-o>O
 
 set number          "Line numbers"
 set ruler           "File progress in bottom right"
@@ -22,7 +23,12 @@ nmap <silent> <Esc><Esc> :noh<CR>
 set splitright
 set splitbelow
 
-nnoremap <C-h> :vert res -3<CR>
-nnoremap <C-j> :res -3<CR>
-nnoremap <C-k> :res +3<CR>
-nnoremap <C-l> :vert res +3<CR>
+nnoremap <C-h> <C-w><C-h>
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
+
+nnoremap <C-w><C-h> :vert res -3<CR>
+nnoremap <C-w><C-j> :res -3<CR>
+nnoremap <C-w><C-k> :res +3<CR>
+nnoremap <C-w><C-l> :vert res +3<CR>
