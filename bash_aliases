@@ -1,4 +1,6 @@
 alias sl='ls'
 alias ok='echo -en "\\a"'
 alias rm='rm -I'
+alias cp='cp -r'
 alias tree='tree -C'
+alias column='column -c $(( $(tput cols) + 1))'

@@ -6,7 +6,7 @@ set tabstop=4       "How many spaces is a tab character worth"
 set autoindent      "Copy indentation from previous line"
 set smartindent     "Indent C Code"
 syntax on
-inoremap {<CR> {<CR>}<C-o>O
+"inoremap {<CR> {<CR>}<C-o>O"
 
 set number          "Line numbers"
 set ruler           "File progress in bottom right"
