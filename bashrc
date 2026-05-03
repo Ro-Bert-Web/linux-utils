@@ -115,3 +115,58 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+
+
+
+
+workingdir() {
+    local out=
+
+    if (dir=$(git rev-parse --show-toplevel 2>/dev/null)); then
+        local repo=$(basename "$dir")
+
+        local subdir=$(pwd | sed "s/^${dir//\//\\/}//")
+        subdir=${subdir#/}
+
+        local branch=$(git rev-parse --abbrev-ref HEAD)
+
+        out="\e[1;93m${repo}\e[0;93m/${subdir} \e[92m[${branch}]\e[0m"
+    else
+        if [[ $(pwd) =~ $HOME ]]; then
+            dir=$(pwd | sed "s/${HOME//\//\\/}//")
+            out="\e[1;93m~\e[0;93m${dir}\e[0m"
+        else
+            out="\e[93m$(pwd)\e[0m"
+        fi
+
+    fi
+
+    printf "$out"
+}
+
+PSFunc() {
+    local exit_code=$?
+
+    if [[ -z $TMUX ]]; then
+        printf "\n\e[1;93mTMUX Sessions\e[0m\n"
+        tmux list-sessions 2>/dev/null
+    fi
+
+    printf "\n"
+    if [[ $exit_code -ne 0 ]]; then
+        printf "\e[1;31m(${exit_code})\e[0m "
+    fi
+    printf "\e[1;94m${USER}@${HOSTNAME}:\e[0m"
+    workingdir
+    printf "\n"
+    printf "\e[34m[$(date +"%F %T")]\e[0m "
+}
+
+PS1="\$(PSFunc)"
+if [[ -z $TMUX ]]; then
+    tmux
+    if ! tmux list-sessions 2>&1 >/dev/null; then
+        exit
+    fi
+fi
