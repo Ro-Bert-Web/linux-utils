@@ -121,9 +121,8 @@ fi
 
 
 workingdir() {
-    local out=
-
-    if (dir=$(git rev-parse --show-toplevel 2>/dev/null)); then
+    local dir=$(git rev-parse --show-toplevel 2>/dev/null)
+    if [[ -n $dir ]]; then
         local repo=$(basename "$dir")
 
         local subdir=$(pwd | sed "s/^${dir//\//\\/}//")
@@ -131,18 +130,16 @@ workingdir() {
 
         local branch=$(git rev-parse --abbrev-ref HEAD)
 
-        out="\e[1;93m${repo}\e[0;93m/${subdir} \e[92m[${branch}]\e[0m"
+        printf "\e[1;93m${repo}\e[0;93m/${subdir} \e[92m[${branch}]\e[0m"
     else
         if [[ $(pwd) =~ $HOME ]]; then
             dir=$(pwd | sed "s/${HOME//\//\\/}//")
-            out="\e[1;93m~\e[0;93m${dir}\e[0m"
+            printf "\e[1;93m~\e[0;93m${dir}\e[0m"
         else
-            out="\e[93m$(pwd)\e[0m"
+            printf "\e[93m$(pwd)\e[0m"
         fi
 
     fi
-
-    printf "$out"
 }
 
 PSFunc() {
