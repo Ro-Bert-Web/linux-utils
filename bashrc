@@ -130,7 +130,7 @@ workingdir() {
 
         local branch=$(git rev-parse --abbrev-ref HEAD)
 
-        printf "\e[1;93m${repo}\e[0;93m/${subdir} \e[92m[${branch}]\e[0m"
+        printf "\e[1;93m${repo}/\e[0;93m${subdir} \e[92m[${branch}]\e[0m"
     else
         if [[ $(pwd) =~ $HOME ]]; then
             dir=$(pwd | sed "s/${HOME//\//\\/}//")
