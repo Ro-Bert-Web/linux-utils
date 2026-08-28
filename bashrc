@@ -130,13 +130,13 @@ workingdir() {
 
         local branch=$(git rev-parse --abbrev-ref HEAD)
 
-        printf "\e[1;93m${repo}/\e[0;93m${subdir} \e[92m[${branch}]\e[0m"
+        printf "\001\e[1;93m\002${repo}/\001\e[0;93m\002${subdir} \001\e[92m\002[${branch}]\001\e[0m\002"
     else
         if [[ $(pwd) =~ $HOME ]]; then
             dir=$(pwd | sed "s/${HOME//\//\\/}//")
-            printf "\e[1;93m~\e[0;93m${dir}\e[0m"
+            printf "\001\e[1;93m\002~\001\e[0;93m\002${dir}\001\e[0m\002"
         else
-            printf "\e[93m$(pwd)\e[0m"
+            printf "\001\e[93m\002$(pwd)\001\e[0m\002"
         fi
 
     fi
@@ -146,18 +146,18 @@ PSFunc() {
     local exit_code=$?
 
     if [[ -z $TMUX ]]; then
-        printf "\n\e[1;93mTMUX Sessions\e[0m\n"
+        printf "\n\001\e[1;93m\002TMUX Sessions\001\e[0m\002\n"
         tmux list-sessions 2>/dev/null
     fi
 
     printf "\n"
     if [[ $exit_code -ne 0 ]]; then
-        printf "\e[1;31m(${exit_code})\e[0m "
+        printf "\001\e[1;31m\002(${exit_code})\001\e[0m\002 "
     fi
-    printf "\e[1;94m${USER}@${HOSTNAME}:\e[0m"
+    printf "\001\e[1;94m\002${USER}@${HOSTNAME}:\001\e[0m\002"
     workingdir
     printf "\n"
-    printf "\e[34m[$(date +"%F %T")]\e[0m "
+    printf "\001\e[34m\002[$(date +"%F %T")]\001\e[0m\002 "
 }
 
 PS1="\$(PSFunc)"

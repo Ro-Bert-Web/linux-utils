@@ -1,6 +1,6 @@
 #!/bin/bash
 
-files=$(find * -type f -not \( -path *.git* -or -name install \))
+files=$(find * -type f -not -name install)
 
 for file in $files; do
     finished=0
