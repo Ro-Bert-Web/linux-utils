@@ -2,6 +2,7 @@
 set expandtab       "Replace tabs with spaces"
 set autoindent      "Copy indentation from previous line"
 set smartindent     "Indent C Code"
+filetype plugin on
 command -nargs=1 Indent :set shiftwidth=<args> | :set softtabstop=<args> | :set tabstop=<args>
 Indent 4
 

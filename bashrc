@@ -167,3 +167,7 @@ if [[ -z $TMUX ]]; then
         exit
     fi
 fi
+
+if [ -f ~/.bashrc.local ]; then
+    . ~/.bashrc.local
+fi
