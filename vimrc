@@ -18,17 +18,16 @@ set hlsearch
 nmap <silent> <Esc><Esc> :noh<CR>
 nmap <silent> <Tab><Tab> /^\(\(\s\{<C-r>=&shiftwidth<CR>\}\)*\S\\|$\)\@!<CR>
 
-
 "----Split windows----"
 set splitright
 set splitbelow
 
-nnoremap <C-h> <C-w><C-h>
-nnoremap <C-j> <C-w><C-j>
-nnoremap <C-k> <C-w><C-k>
-nnoremap <C-l> <C-w><C-l>
+"nnoremap <C-h> <C-w><C-h>"
+"nnoremap <C-j> <C-w><C-j>"
+"nnoremap <C-k> <C-w><C-k>"
+"nnoremap <C-l> <C-w><C-l>"
 
-nnoremap <C-w><C-h> :vert res -3<CR>
-nnoremap <C-w><C-j> :res -3<CR>
-nnoremap <C-w><C-k> :res +3<CR>
-nnoremap <C-w><C-l> :vert res +3<CR>
+"nnoremap <C-w><C-h> :vert res -3<CR>"
+"nnoremap <C-w><C-j> :res -3<CR>"
+"nnoremap <C-w><C-k> :res +3<CR>"
+"nnoremap <C-w><C-l> :vert res +3<CR>"
