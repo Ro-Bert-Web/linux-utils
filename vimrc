@@ -11,6 +11,7 @@ syntax on
 set number          "Line numbers"
 set ruler           "File progress in bottom right"
 set scrolloff=10
+let g:netrw_liststyle=3
 
 "----Search----"
 set incsearch
